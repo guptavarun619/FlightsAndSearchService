@@ -6,6 +6,7 @@
 - Execute `npm install` in the same path of the project
 - Create `.env` file in the root directory and add the following environment varaible
   - `PORT=3000`
+  - `DB_SYNC=true` // if you want to sync the DB
 - Inside the `src/config` folder create a new file `config.json` and then add the following piece of json
 
 ```
@@ -22,6 +23,7 @@
 
 - Once you've aded your db config as listed above, go to `src` folder from your terminal and execute `npx sequelize db:create` and then execute
   `npx sequelize db:migrate`
+- In the `src` directory itself execute `npx sequelize db:seed:all` to seed the data
 
 ## DB Design
 
@@ -41,3 +43,7 @@
 ### Airport -> id, name, address, city_id(FK), created_at, updated_id
 
     Relationship -> [Airport M:1 City] City has many airports and Airport belongs to 1 city (one to many)
+
+```
+npx sequelize model:generate --name Airport --attributes name:String,address:String,cityId:integer
+```
