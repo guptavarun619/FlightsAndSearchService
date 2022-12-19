@@ -33,3 +33,11 @@
     - A 'flight' belongs to an 'airplane' but one 'airplane' can be used in mulitple 'flight'.
     - A 'city' has many 'airport' but one 'airport' belongs to one 'city'.
     - One 'airport' can have many 'flight', but a 'flight' belongs to one 'airport'.
+
+## Tables
+
+### City -> id, name, created_at, updated_at
+
+### Airport -> id, name, address, city_id(FK), created_at, updated_id
+
+    Relationship -> [Airport M:1 City] City has many airports and Airport belongs to 1 city (one to many)
