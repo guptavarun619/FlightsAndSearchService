@@ -26,7 +26,6 @@ const create = async (req, res) => {
 // [DELETE] => /city/:id
 const destroy = async (req, res) => {
   try {
-    console.log("city delete route");
     const response = await cityService.deleteCity(req.params.id);
     res.status(200).json({
       data: response,
@@ -47,10 +46,7 @@ const destroy = async (req, res) => {
 
 // [GET] => /city/:id
 const get = async (req, res) => {
-  console.log("agdsfads");
   try {
-    console.log("It atleast got here");
-    console.log(req.params.id);
     const city = await cityService.getCity(req.params.id);
     res.status(200).json({
       data: city,

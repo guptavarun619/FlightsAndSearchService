@@ -39,6 +39,7 @@ class CityRepository {
 
   async getCity(cityId) {
     try {
+      console.log({ cityId });
       const city = await City.findByPk(cityId);
       return city;
     } catch (error) {
