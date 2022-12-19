@@ -27,9 +27,20 @@ class CityRepository {
 
   async updateCity(cityId, data) {
     try {
-      const city = await City.update(data, {
-        where: { id: cityId },
-      });
+      //   this approach works just fine but returns an array with an element 1,
+      //   that indicates the updation was completed and does not return the updated record
+      //   while using Postgres `returning: true` key can be passed just after where clause but is not supported in MySQL
+      //   const city = await City.update(data, {
+      //     where: { id: cityId },
+      //   });
+
+      //   the approach that works for MySQL to get the updated record is to,
+      //   find the target record, make the changes in it's object form and save it to DB
+
+      const city = await City.findByPk(cityId);
+      city.name = data.name;
+      await city.save();
+
       return city;
     } catch (error) {
       console.log("Something went wrong in the repository layer");
